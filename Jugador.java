@@ -16,16 +16,13 @@ import javafx.scene.image.Image;
 public class Jugador {
     private int atack;
     private int defense;
-    private int ancho;
-    private int alto;
+
     private Chaza inventario;
     private int luks;
     private int x;
     private int y;
     private Image imagen;
-    public Jugador(int ancho, int alto, int x, int y) throws FileNotFoundException {
-        this.ancho = ancho;
-        this.alto = alto;
+    public Jugador(int x, int y) throws FileNotFoundException {
         this.luks=0;
         this.x=x;
         this.y=y;
@@ -33,12 +30,6 @@ public class Jugador {
         this.imagen=new Image(image);
         this.inventario= new Chaza(20,20);
         
-    }
-    public int getAncho() {
-        return ancho;
-    }
-    public int getAlto() {
-        return alto;
     }
     public void buy(Chaza chaza, int i){
         String name= chaza.getInventory().get(i).getName();
@@ -50,6 +41,35 @@ public class Jugador {
         this.inventario.getInventory().add(item);
         chaza.getInventory().remove(i);
     }
+
+    public int getAtack() {
+        return atack;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public Chaza getInventario() {
+        return inventario;
+    }
+
+    public int getLuks() {
+        return luks;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public Image getImagen() {
+        return imagen;
+    }
+    
     public void useItem(int i){
         this.atack+=this.inventario.getInventory().get(i).getAtack();
         this.defense+=this.inventario.getInventory().get(i).getDefense();
